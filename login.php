@@ -100,7 +100,7 @@ if (Input::exists()) {
       height: 100%;
     }
     .image {
-      margin-top: -100px;
+      margin-top: 150px;
     }
     .column {
       max-width: 450px;
@@ -109,7 +109,7 @@ if (Input::exists()) {
 </head>
 <body>
 <!--Login form-->
-<div class="ui middle aligned center aligned grid" style="margin-top: 250px" >
+<div class="ui middle aligned center aligned grid" >
   <div class="column">
     <h2 class="ui image header">
     <img class="ui centered image"  src="images/menu-logo.png">
