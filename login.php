@@ -59,11 +59,11 @@ if (Input::exists()) {
                   header('location: articles/index.php');
 				}
 				else{
-					$error = '<p class="alert alert-danger">ERROR: Wrong Password!</p>';
+					$error = '<div class="ui red label" style="margin:10px;">ERROR: Wrong Password!</div>';
 				}
 			}
 			else{
-				$error = '<p class="alert alert-danger">ERROR: Username Doesn"t Exist!</p>';
+				$error = '<div class="ui red label" style="margin:10px;">Email you entered is not registered to any account yet! </br>You can sign up below.</div>';
 			}
 
 	}
@@ -92,6 +92,7 @@ if (Input::exists()) {
         background-size: cover;
         padding: 0;
         margin: 0;
+        overflow:hidden;
       }
 
 
@@ -108,14 +109,16 @@ if (Input::exists()) {
 </head>
 <body>
 <!--Login form-->
-<div class="ui middle aligned center aligned grid">
+<div class="ui middle aligned center aligned grid" style="margin-top: 250px" >
   <div class="column">
     <h2 class="ui image header">
-      <div class="content">
+    <img class="ui centered image"  src="images/menu-logo.png">
+      <div class="content" style="color:#fff;">
         Log-in to your account
       </div>
     </h2>
-    <?php echo $error; ?>
+    <br>
+      <?php echo $error; ?>
     <form role="form"  action="" method="POST" class="ui large form">
       <div class="ui stacked secondary  segment">
         <div class="field">
@@ -132,7 +135,7 @@ if (Input::exists()) {
         </div>
         <div class="field">
           <input type="hidden" name="token" value=""> 
-          <input type="submit" name="Signin" value="sign in" class="ui fluid large teal submit button">
+          <input type="submit" name="Signin" value="sign in" class="ui fluid large red submit button">
         </div>
       </div>
       <div class="ui error message"></div>
@@ -140,7 +143,7 @@ if (Input::exists()) {
     </form>
 
     <div class="ui message">
-      New to us? <a href="register.php">Register</a>
+      New to Arosto Noma? <a href="register.php">Register</a>
     </div>
   </div>
 </div>
