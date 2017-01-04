@@ -10,7 +10,7 @@
 class Hash
 {
     //Makes a sha265 salt
-    public static function make($string, $salt = ''){
+    public static function make($string, $salt = 'arostonoma'){
         //Makes a salt
         return hash('sha256', $string.$salt);
     }
