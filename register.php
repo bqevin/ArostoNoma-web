@@ -28,6 +28,7 @@ if (Input::exists()) {
 
 	    if ($validated) {
 	    	
+
 	    	//$salt = Hash::salt(32);
 	    	$password = md5(Input::get('password'));
 
@@ -56,6 +57,8 @@ if (Input::exists()) {
 
 
 ?>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -155,7 +158,6 @@ if (Input::exists()) {
 	</div>
 </div>
 </div>
-
         <div class="container">
 			<div class="panel panel-primary">
 				<div class="panel-body">
@@ -202,7 +204,6 @@ if (Input::exists()) {
 		                        </div>
 		                    </div>
 		                </div> <!-- /.form-group -->
-               
 
 						<div class="form-group">
 							<button id="signupSubmit" name="send" type="submit" class="btn btn-info btn-block">Create your account</button>
@@ -216,6 +217,7 @@ if (Input::exists()) {
 			</div>
 		</div>
 	</div>
+
 <!--Load the scripts-->
 <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.js"></script>
 <script src="semantic-ui/semantic.js"></script>
@@ -243,3 +245,4 @@ if (Input::exists()) {
 </script>
 </body>
 </html>
+

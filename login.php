@@ -1,6 +1,6 @@
 <?php
-session_start();
 
+session_start();
 require 'core/rb.php';
 
 require_once 'classes/Input.php';
@@ -36,6 +36,7 @@ if (Input::exists()) {
 					$_SESSION['username'] = $username;
 
 					//If user has Checked remember this code is executed
+
 					// if ($remember) {
      //                    $hash = Hash::unique();
      //                    $hashCheck = R::count('users_session', 'id = ?', $res['id']); 

@@ -1,4 +1,38 @@
 
+.container{
+  width: 90%;
+  margin: 0 auto;
+  padding: 10px 20px;
+}
+.list .item{
+  margin-top: 10px;
+}
+.segment .list .item{
+  margin-top: 0px ;
+  padding: 10px !important;
+}
+.link{
+  text-decoration: underline;
+}
+.title{
+  font-size: 1.5em !important;
+  font-weight: bold !important;
+  color: red !important;
+}
+.pull-right{
+  float: right !important;
+}
+.post-type{
+  width: 100px !important;
+}
+.write{
+  margin-left: 15px !important;
+}
+.upload{
+    width: 290px;
+    margin-top: .875em;
+}
+=======
 
 form { margin: 0px 10px; }
 
