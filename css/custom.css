@@ -28,7 +28,16 @@
 .write{
   margin-left: 15px !important;
 }
-.upload{
-    width: 290px;
-    margin-top: .875em;
+.upload-img{
+    width: 100%;
+    margin-top: .875em !important;
 }
+.inputfile {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
