@@ -2,6 +2,8 @@
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.7/semantic.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.7/semantic.min.js"></script>
+<script src="js/sweetalert.min.js"></script>
+<link rel="stylesheet" type="text/css" href="css/sweetalert.css">
 
 <link rel="stylesheet" type="text/css" href="css/custom.css">
 <style type="text/css">
@@ -131,8 +133,11 @@ $(document).ready( function() {
       <label>Location</label>
       <input class="input-focused" name="location" placeholder="Location">
     </div>
-    <button class="ui submit button" type="submit">
+    <button class=" positive ui submit button" type="submit">
 		Update Profile
+	</button>
+	<button class="negative ui button" type="reset">
+	  Discard
 	</button>
   </div>
   </form>
@@ -187,44 +192,27 @@ $(document).ready( function() {
 		$('#updateprofile').submit(function(){
 			event.preventDefault();
 			// URL sending our data to
-			var url = 'editprofile.inc.php';
+			var url = 'editprofile.inc.php',
+				formData = new FormData(this);
 
-			// Get the form data from the form submited
-			var $form = $(this),
-				name = $form.find("input[name='name']").val(),
-				emailsettings = $form.find("select[name='emailsettings']").val(),
-				bio = $form.find("textarea[name='bio']").val(),
-				location = $form.find("input[name='location']").val(),
-				filepath = $("input[name='profilepic']").val(); //C:\fakepath\filename.jpg
+			$.ajax({
+	            type:'POST',
+	            url: url,
+	            data:formData,
+	            cache:false,
+	            contentType: false,
+	            processData: false,
+	            success:function(data){
+	                swal("Successful!", "You Updated Your Profile!", "success");
+	                console.log(data);
+	            },
+	            error: function(data){
+	                swal("Error!", "Error Updated Your Profile!", "error");
+	                console.log(data);
+	            }
+	        });
 
-			var filename = formatFilename(filepath)
-
-			// Create object with the form data
-			var updatedprofile = {
-				name: name,
-				emailsettings: emailsettings,
-				bio: bio,
-				location: location,
-				profilepic: filename 
-			}
-
-			// console.log(updatedprofile);
-			$.post(url, updatedprofile, function(data, status){
-				console.log(data);
-			})
 		});
-
-		//Change file name from C:\fakepath\filename.jpg to filename.jpg
-		function formatFilename(filepath){
-			if (filepath) {
-			    var startIndex = (filepath.indexOf('\\') >= 0 ? filepath.lastIndexOf('\\') : filepath.lastIndexOf('/'));
-			    var filename = filepath.substring(startIndex);
-			    if (filename.indexOf('\\') === 0 || filename.indexOf('/') === 0) {
-			        filename = filename.substring(1);
-			    }
-			}
-			return filename;
-		}
 
 		// Generate image preview before upload
 		function readURL(input) {
