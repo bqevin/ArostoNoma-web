@@ -15,40 +15,40 @@ $user = R::dispense('users');
 if (Input::exists()) {
     $validate = new Validate();
   
-	if($validated = $validate->check($_POST, array(
-	    'username' => array('required' => true),
-	    'password' => array('required' => true)
-	    ))){
+    if($validated = $validate->check($_POST, array(
+        'username' => array('required' => true),
+        'password' => array('required' => true)
+        ))){
 
-			$username = Input::get('username');
-			$password = Input::get('password');
-			$remember = (Input::get('remember') === 'on') ? true : false;
+            $username = Input::get('username');
+            $password = Input::get('password');
+            $remember = (Input::get('remember') === 'on') ? true : false;
 
-			if (R::count('users', 'email=?', [$username]) != 0) {
-				$res = R::getAll('SELECT * FROM users WHERE email = ?', [$username]);
+            if (R::count('users', 'email=?', [$username]) != 0) {
+                $res = R::getAll('SELECT * FROM users WHERE email = ?', [$username]);
 
-				foreach ($res as $value) {
-					$pass = $value['password'];
-					$salt = $value['salt'];
-				}
-				$password = md5($password);
-				if($password == $pass){
-					$_SESSION['username'] = $username;
+                foreach ($res as $value) {
+                    $pass = $value['password'];
+                    $salt = $value['salt'];
+                }
+                $password = md5($password);
+                if($password == $pass){
+                    $_SESSION['username'] = $username;
 
-					//If user has Checked remember this code is executed
+                    //If user has Checked remember this code is executed
 
-					// if ($remember) {
+                    // if ($remember) {
      //                    $hash = Hash::unique();
      //                    $hashCheck = R::count('users_session', 'id = ?', $res['id']); 
-                      	
+                        
      //                    if (!$hashCheck) {
 
-     //                    	$usersessions = R::dispense('users_session');
+     //                     $usersessions = R::dispense('users_session');
 
-     //                    	$usersessions['user_id'] = $res['id'];
-     //                    	$usersessions['hash'] = $hash;
+     //                     $usersessions['user_id'] = $res['id'];
+     //                     $usersessions['hash'] = $hash;
 
-     //                    	R::store($usersessions);
+     //                     R::store($usersessions);
 
      //                    } 
      //                    else {
@@ -58,16 +58,16 @@ if (Input::exists()) {
                         
                     //}
                   header('location: articles/index.php');
-				}
-				else{
-					$error = '<div class="ui red label" style="margin:10px;">ERROR: Wrong Password!</div>';
-				}
-			}
-			else{
-				$error = '<div class="ui red label" style="margin:10px;">Email you entered is not registered to any account yet! </br>You can sign up below.</div>';
-			}
+                }
+                else{
+                    $error = '<div class="ui red label" style="margin:10px;">ERROR: Wrong Password!</div>';
+                }
+            }
+            else{
+                $error = '<div class="ui red label" style="margin:10px;">Email you entered is not registered to any account yet! </br>You can sign up below.</div>';
+            }
 
-	}
+    }
 
 }
 
