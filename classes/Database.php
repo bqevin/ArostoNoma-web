@@ -43,8 +43,7 @@ class Database{
                 }
             }
             //Execute the query anyway whether there is Parameters or no
-            if ($this->_query->execute()){
-                //echo "Success!";
+            if ($this->_query->execute())
                 //Data is fetched as Objects which can be pointed out by query()
                 $this->_results = $this->_query->fetchAll(PDO::FETCH_OBJ);
                 $this->_count = $this->_query->rowCount();
